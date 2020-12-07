@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Battleship.iml" filepath="$PROJECT_DIR$/.idea/modules/Battleship.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Problems/Days of the week/Battleship.Problems-Days_of_the_week.iml" filepath="$PROJECT_DIR$/.idea/modules/Problems/Days of the week/Battleship.Problems-Days_of_the_week.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Problems/Days of the week/Battleship.Problems-Days_of_the_week.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Problems/Days of the week/Battleship.Problems-Days_of_the_week.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Problems/Days of the week/Battleship.Problems-Days_of_the_week.test.iml" filepath="$PROJECT_DIR$/.idea/modules/Problems/Days of the week/Battleship.Problems-Days_of_the_week.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Problems/Out of bounds!/Battleship.Problems-Out_of_bounds!.iml" filepath="$PROJECT_DIR$/.idea/modules/Problems/Out of bounds!/Battleship.Problems-Out_of_bounds!.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Problems/Out of bounds!/Battleship.Problems-Out_of_bounds!.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Problems/Out of bounds!/Battleship.Problems-Out_of_bounds!.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Problems/Out of bounds!/Battleship.Problems-Out_of_bounds!.test.iml" filepath="$PROJECT_DIR$/.idea/modules/Problems/Out of bounds!/Battleship.Problems-Out_of_bounds!.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/util/Battleship.util.iml" filepath="$PROJECT_DIR$/.idea/modules/util/Battleship.util.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/util/Battleship.util.main.iml" filepath="$PROJECT_DIR$/.idea/modules/util/Battleship.util.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/util/Battleship.util.test.iml" filepath="$PROJECT_DIR$/.idea/modules/util/Battleship.util.test.iml" />
+    </modules>
+  </component>
+</project>

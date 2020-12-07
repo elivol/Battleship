@@ -1,0 +1,4 @@
+# Project exclude paths
+/.gradle/
+/Problems/Days of the week/out/
+/Problems/Days of the week/out/production/classes/
