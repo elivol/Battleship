@@ -11,6 +11,7 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/Battleship/task" />
             <option value="$PROJECT_DIR$/Problems/Days of the week" />
             <option value="$PROJECT_DIR$/Problems/Out of bounds!" />
             <option value="$PROJECT_DIR$/util" />
