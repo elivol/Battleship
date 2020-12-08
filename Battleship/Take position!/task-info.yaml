@@ -282,7 +282,7 @@ files:
         }
     }
   learner_created: false
-- name: src/battleship/HorizontalField.java
+- name: src/battleship/Position.java
   visible: true
   learner_created: true
 feedback_link: https://hyperskill.org/projects/125/stages/663/implement
