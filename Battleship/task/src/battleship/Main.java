@@ -7,7 +7,10 @@ import java.util.Scanner;
 public class Main {
 
     private static Scanner scanner;
-    private static final int size = 10;
+    private static final int SIZE = 10;
+    private static final char SHIP_SYMBOL = 'O';
+    private static final char HIT_SYMBOL = 'X';
+    private static final char MISSED_SYMBOL = 'M';
     private static char[][] field;
     private static Map<Character, Integer> letters;
 
@@ -15,7 +18,7 @@ public class Main {
     static {
         letters = new HashMap<>();
         Character first = 'A';
-        for (int i = 0; i < size; i++) {
+        for (int i = 0; i < SIZE; i++) {
             letters.put(first, i);
             first++;
         }
@@ -27,15 +30,16 @@ public class Main {
 
     public static void start(){
         scanner = new Scanner(System.in);
-        field = new char[size][size];
+        field = new char[SIZE][SIZE];
         initField();
         printField();
         locateShips();
+        startTheGame();
     }
 
     public static void initField() {
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
+        for (int i = 0; i < SIZE; i++) {
+            for (int j = 0; j < SIZE; j++) {
                 field[i][j] = '~';
             }
         }
@@ -47,6 +51,36 @@ public class Main {
         locateSubmarine();
         locateCruiser();
         locateDestroyer();
+    }
+
+    public static void startTheGame() {
+        System.out.println("The game starts!");
+        takeAShot();
+        printField();
+    }
+
+    private static void takeAShot() {
+        System.out.println("Take a shot!");
+        String target = scanner.next();
+        int row = getIndexRow(target);
+        int col = getIndexCol(target);
+        boolean ok = row >= 0 && row < SIZE && col >= 0 && col < SIZE;
+
+        while (!ok) {
+            System.out.println("Error! You entered the wrong coordinates! Try again:");
+            target = scanner.next();
+            row = getIndexRow(target);
+            col = getIndexCol(target);
+            ok = row >= 0 && row < SIZE && col >= 0 && col < SIZE;
+        }
+
+        if (field[row][col] == SHIP_SYMBOL) {
+            System.out.println("You hit a ship!");
+            field[row][col] = HIT_SYMBOL;
+        } else {
+            System.out.println("You missed!");
+            field[row][col] = MISSED_SYMBOL;
+        }
     }
 
     public static void locateDestroyer() {
@@ -122,7 +156,7 @@ public class Main {
 
         for (int i = startRow; i <= endRow; i++) {
             for (int j = startCol; j <= endCol; j++) {
-                field[i][j] = 'O';
+                field[i][j] = SHIP_SYMBOL;
             }
         }
     }
@@ -147,10 +181,10 @@ public class Main {
         int endRow = position.getEndRow();
         int endCol = position.getEndCol();
 
-        return startRow >= 0 && startRow < size &&
-                endRow >= 0 && endRow < size &&
-                startCol >= 0 && startCol < size &&
-                endCol >= 0 && endCol < size;
+        return startRow >= 0 && startRow < SIZE &&
+                endRow >= 0 && endRow < SIZE &&
+                startCol >= 0 && startCol < SIZE &&
+                endCol >= 0 && endCol < SIZE;
     }
 
     private static boolean isCrossedOrClose(Position position) {
@@ -162,7 +196,7 @@ public class Main {
         boolean crossedOrClose = false;
         for (int i = startRow - 1; !crossedOrClose && i <= endRow + 1; i++) {
             for (int j = startCol - 1; !crossedOrClose &&  j <= endCol + 1; j++) {
-                if (i >= 0 && i < size && j >=0 && j < size && field[i][j] == 'O') {
+                if (i >= 0 && i < SIZE && j >=0 && j < SIZE && field[i][j] == SHIP_SYMBOL) {
                     crossedOrClose = true;
                 }
             }
@@ -176,7 +210,8 @@ public class Main {
     }
 
     private static int getIndexRow(String position){
-        return letters.get(position.charAt(0));
+        char letter = position.charAt(0);
+        return letters.containsKey(letter) ? letters.get(position.charAt(0)) : -1;
     }
 
     private static int getIndexCol(String position){
@@ -184,8 +219,8 @@ public class Main {
     }
 
     private static void printField() {
-        for (int i = 0; i < size + 1; i++) {
-            for (int j = 0; j < size; j++) {
+        for (int i = 0; i < SIZE + 1; i++) {
+            for (int j = 0; j < SIZE; j++) {
                 if (i == 0) {
                     if (j == 0) {
                         System.out.print("  ");
