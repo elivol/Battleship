@@ -11,6 +11,7 @@ public class Main {
     private static char[][] field;
     private static Map<Character, Integer> letters;
 
+
     static {
         letters = new HashMap<>();
         Character first = 'A';
@@ -42,34 +43,62 @@ public class Main {
 
     public static void locateShips(){
         locateAircraft();
-//        locateBattleship();
-//        locateSubmarine();
-//        locateCruiser();
-//        locateDestroyer();
+        locateBattleship();
+        locateSubmarine();
+        locateCruiser();
+        locateDestroyer();
+    }
+
+    public static void locateDestroyer() {
+        System.out.println("Enter the coordinates of the Destroyer (2 cells):");
+        takePosition(2);
+        printField();
+    }
+
+    public static void locateCruiser() {
+        System.out.println("Enter the coordinates of the Cruiser (3 cells):");
+        takePosition(3);
+        printField();
+    }
+
+    public static void locateSubmarine() {
+        System.out.println("Enter the coordinates of the Submarine (3 cells):");
+        takePosition(3);
+        printField();
+    }
+
+    public static void locateBattleship() {
+        System.out.println("Enter the coordinates of the Battleship (4 cells):");
+        takePosition(4);
+        printField();
     }
 
     public static void locateAircraft(){
         System.out.println("Enter the coordinates of the Aircraft Carrier (5 cells):");
-        takePosition();
+        takePosition(5);
         printField();
     }
 
-    private static void takePosition(){
+    private static void takePosition(int length){
         Position position = takeFromIO();
         boolean positionIsOk = false;
 
         while (!positionIsOk) {
             // check position correctness
-            if (isInBoundaries(position)) {
-                System.out.println("Error! Try again:");
+            if (!isInBoundaries(position)) {
+                System.out.println("Error! Out of field. Try again:");
                 position = takeFromIO();
-            } else if (isLinear(position)) {
-                System.out.println("Error! Try again:");
+            } else if (!isLinear(position)) {
+                System.out.println("Error! Ship is not linear! Try again:");
                 position = takeFromIO();
-            } else if(!isCrossedOrClose(position)) {
-                System.out.println("Error! Try again:");
+            } else if(isCrossedOrClose(position)) {
+                System.out.println("Error! Wrong ship location! Try again:");
+                position = takeFromIO();
+            } else if (!isRightLength(position, length)) {
+                System.out.println("Error! Wrong ship length! Try again:");
                 position = takeFromIO();
             } else  {
+                positionIsOk = true;
                 putShip(position);
             }
         }
@@ -78,10 +107,10 @@ public class Main {
     private static Position takeFromIO() {
         String startPosition = scanner.next();
         String endPosition = scanner.next();
-        int startRow = getIndexRow(startPosition);
-        int startCol = getIndexCol(startPosition);
-        int endRow = getIndexRow(endPosition);
-        int endCol = getIndexCol(endPosition);
+        int startRow = Math.min(getIndexRow(startPosition), getIndexRow(endPosition));
+        int startCol = Math.min(getIndexCol(startPosition), getIndexCol(endPosition));
+        int endRow = Math.max(getIndexRow(startPosition), getIndexRow(endPosition));
+        int endCol = Math.max(getIndexCol(startPosition), getIndexCol(endPosition));
         return new Position(startRow, startCol, endRow, endCol);
     }
 
@@ -93,9 +122,23 @@ public class Main {
 
         for (int i = startRow; i <= endRow; i++) {
             for (int j = startCol; j <= endCol; j++) {
-                field[i][j] = '0';
+                field[i][j] = 'O';
             }
         }
+    }
+
+    private static boolean isRightLength(Position position, int length) {
+        int startRow = position.getStartRow();
+        int startCol = position.getStartCol();
+        int endRow = position.getEndRow();
+        int endCol = position.getEndCol();
+
+        if (startRow == endRow) {
+            return Math.abs(endCol - startCol) + 1 == length;
+        } else if (startCol == endCol) {
+            return Math.abs(endRow - startRow) + 1 == length;
+        }
+        return false;
     }
 
     private static boolean isInBoundaries(Position position) {
@@ -119,7 +162,7 @@ public class Main {
         boolean crossedOrClose = false;
         for (int i = startRow - 1; !crossedOrClose && i <= endRow + 1; i++) {
             for (int j = startCol - 1; !crossedOrClose &&  j <= endCol + 1; j++) {
-                if (i >= 0 && i < size && j >=0 && j < size && field[i][j] == '0') {
+                if (i >= 0 && i < size && j >=0 && j < size && field[i][j] == 'O') {
                     crossedOrClose = true;
                 }
             }
@@ -137,7 +180,7 @@ public class Main {
     }
 
     private static int getIndexCol(String position){
-        return Integer.parseInt(position.substring(1));
+        return Integer.parseInt(position.substring(1)) - 1;
     }
 
     private static void printField() {
