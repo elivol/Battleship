@@ -4,3 +4,5 @@ battleship/Main.java
  battleship.Symbols
 battleship/Position.java
  battleship.Position
+battleship/Field.java
+ battleship.Field

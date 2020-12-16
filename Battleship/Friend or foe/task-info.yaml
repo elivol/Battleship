@@ -382,6 +382,48 @@ files:
         }
     }
   learner_created: false
+- name: src/battleship/Position.java
+  visible: true
+  text: |
+    package battleship;
+
+    public class Position {
+        private int startRow;
+        private int startCol;
+        private int endRow;
+        private int endCol;
+
+        public Position(int startRow, int startCol, int endRow, int endCol) {
+            this.startRow = startRow;
+            this.startCol = startCol;
+            this.endRow = endRow;
+            this.endCol = endCol;
+        }
+
+        public int getStartRow() {
+            return startRow;
+        }
+
+        public int getStartCol() {
+            return startCol;
+        }
+
+        public int getEndRow() {
+            return endRow;
+        }
+
+        public int getEndCol() {
+            return endCol;
+        }
+    }
+  learner_created: true
+- name: src/battleship/Field.java
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/projects/125/stages/667/implement
-status: Unchecked
+status: Solved
+feedback:
+  message: Congratulations! Continue on <a href="https://hyperskill.org/projects/125/stages/667/implement">JetBrains
+    Academy</a>
+  time: Wed, 16 Dec 2020 19:02:55 UTC
 record: -1
