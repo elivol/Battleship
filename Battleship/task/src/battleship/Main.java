@@ -4,25 +4,28 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
+enum Symbols {
+    FOG('~'),
+    SHIP('O'),
+    HIT('X'),
+    MISSED('M');
+
+    private final char symbol;
+
+    Symbols(char symbol) {
+        this.symbol = symbol;
+    }
+
+    public char getSymbol() {
+        return symbol;
+    }
+}
+
 public class Main {
 
     private static Scanner scanner;
     private static final int SIZE = 10;
-    private static final char SHIP_SYMBOL = 'O';
-    private static final char HIT_SYMBOL = 'X';
-    private static final char MISSED_SYMBOL = 'M';
     private static char[][] field;
-    private static Map<Character, Integer> letters;
-
-
-    static {
-        letters = new HashMap<>();
-        Character first = 'A';
-        for (int i = 0; i < SIZE; i++) {
-            letters.put(first, i);
-            first++;
-        }
-    }
 
     public static void main(String[] args) {
         start();
@@ -40,7 +43,7 @@ public class Main {
     public static void initField() {
         for (int i = 0; i < SIZE; i++) {
             for (int j = 0; j < SIZE; j++) {
-                field[i][j] = '~';
+                field[i][j] = Symbols.FOG.getSymbol();
             }
         }
     }
@@ -74,12 +77,12 @@ public class Main {
             ok = row >= 0 && row < SIZE && col >= 0 && col < SIZE;
         }
 
-        if (field[row][col] == SHIP_SYMBOL) {
+        if (field[row][col] == Symbols.SHIP.getSymbol()) {
             System.out.println("You hit a ship!");
-            field[row][col] = HIT_SYMBOL;
+            field[row][col] = Symbols.HIT.getSymbol();
         } else {
             System.out.println("You missed!");
-            field[row][col] = MISSED_SYMBOL;
+            field[row][col] = Symbols.MISSED.getSymbol();
         }
     }
 
@@ -156,7 +159,7 @@ public class Main {
 
         for (int i = startRow; i <= endRow; i++) {
             for (int j = startCol; j <= endCol; j++) {
-                field[i][j] = SHIP_SYMBOL;
+                field[i][j] = Symbols.SHIP.getSymbol();
             }
         }
     }
@@ -196,7 +199,7 @@ public class Main {
         boolean crossedOrClose = false;
         for (int i = startRow - 1; !crossedOrClose && i <= endRow + 1; i++) {
             for (int j = startCol - 1; !crossedOrClose &&  j <= endCol + 1; j++) {
-                if (i >= 0 && i < SIZE && j >=0 && j < SIZE && field[i][j] == SHIP_SYMBOL) {
+                if (i >= 0 && i < SIZE && j >=0 && j < SIZE && field[i][j] == Symbols.SHIP.getSymbol()) {
                     crossedOrClose = true;
                 }
             }
@@ -211,7 +214,7 @@ public class Main {
 
     private static int getIndexRow(String position){
         char letter = position.charAt(0);
-        return letters.containsKey(letter) ? letters.get(position.charAt(0)) : -1;
+        return (int) letter - 'A';
     }
 
     private static int getIndexCol(String position){
