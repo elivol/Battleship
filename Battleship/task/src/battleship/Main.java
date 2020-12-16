@@ -21,6 +21,30 @@ enum Symbols {
     }
 }
 
+enum Ships {
+    AIRCRAFT("Aircraft Carrier", 5),
+    BATTLESHIP("Battleship", 4),
+    SUBMARINE("Submarine", 3),
+    CRUISER("Cruiser", 3),
+    DESTROYER("Destroyer", 2);
+
+    private final String name;
+    private final int length;
+
+    Ships(String name, int length) {
+        this.name = name;
+        this.length = length;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getLength() {
+        return length;
+    }
+}
+
 public class Main {
 
     private static Scanner scanner;
@@ -49,11 +73,12 @@ public class Main {
     }
 
     public static void locateShips(){
-        locateAircraft();
-        locateBattleship();
-        locateSubmarine();
-        locateCruiser();
-        locateDestroyer();
+        for (Ships ship : Ships.values()) {
+            System.out.printf("Enter the coordinates of the %s (%d cells):", ship.getName(), ship.getLength());
+            takePosition(ship.getLength());
+            printField();
+        }
+
     }
 
     public static void startTheGame() {
@@ -84,36 +109,6 @@ public class Main {
             System.out.println("You missed!");
             field[row][col] = Symbols.MISSED.getSymbol();
         }
-    }
-
-    public static void locateDestroyer() {
-        System.out.println("Enter the coordinates of the Destroyer (2 cells):");
-        takePosition(2);
-        printField();
-    }
-
-    public static void locateCruiser() {
-        System.out.println("Enter the coordinates of the Cruiser (3 cells):");
-        takePosition(3);
-        printField();
-    }
-
-    public static void locateSubmarine() {
-        System.out.println("Enter the coordinates of the Submarine (3 cells):");
-        takePosition(3);
-        printField();
-    }
-
-    public static void locateBattleship() {
-        System.out.println("Enter the coordinates of the Battleship (4 cells):");
-        takePosition(4);
-        printField();
-    }
-
-    public static void locateAircraft(){
-        System.out.println("Enter the coordinates of the Aircraft Carrier (5 cells):");
-        takePosition(5);
-        printField();
     }
 
     private static void takePosition(int length){
