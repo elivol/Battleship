@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Tests" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-12-09T18:36:15" hostname="DESKTOP-NK3PUL3" time="0.703">
+<testsuite name="Tests" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-12-16T11:42:07" hostname="DESKTOP-NK3PUL3" time="1.395">
   <properties/>
-  <testcase name="start" classname="Tests" time="0.703"/>
+  <testcase name="start" classname="Tests" time="1.395"/>
   <system-out><![CDATA[?[1;31m
 Start test 1?[0m
   1 2 3 4 5 6 7 8 9 10 
@@ -87,8 +87,30 @@ H ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 I ~ O ~ ~ ~ ~ ~ ~ ~ ~ 
 J ~ O ~ ~ ~ ~ ~ O O O 
 The game starts!
+  1 2 3 4 5 6 7 8 9 10 
+A ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
+B ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
+C ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
+D ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
+E ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
+F ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
+G ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
+H ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
+I ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
+J ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
 Take a shot!
 > A1
+  1 2 3 4 5 6 7 8 9 10 
+A X ~ ~ ~ ~ ~ ~ ~ ~ ~ 
+B ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
+C ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
+D ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
+E ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
+F ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
+G ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
+H ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
+I ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
+J ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
 You hit a ship!
   1 2 3 4 5 6 7 8 9 10 
 A X ~ ~ ~ ~ ~ ~ ~ ~ ~ 
@@ -186,12 +208,34 @@ H O O O ~ ~ ~ ~ ~ ~ ~
 I ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
 J ~ ~ O O O O O ~ ~ ~ 
 The game starts!
+  1 2 3 4 5 6 7 8 9 10 
+A ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
+B ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
+C ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
+D ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
+E ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
+F ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
+G ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
+H ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
+I ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
+J ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
 Take a shot!
 > M1
 Error! You entered the wrong coordinates! Try again:
 > A11
 Error! You entered the wrong coordinates! Try again:
 > E4
+  1 2 3 4 5 6 7 8 9 10 
+A ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
+B ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
+C ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
+D ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
+E ~ ~ ~ M ~ ~ ~ ~ ~ ~ 
+F ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
+G ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
+H ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
+I ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
+J ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
 You missed!
   1 2 3 4 5 6 7 8 9 10 
 A O ~ ~ ~ ~ ~ ~ ~ ~ ~ 
@@ -289,8 +333,30 @@ H O O O ~ ~ ~ ~ ~ ~ ~
 I ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
 J ~ ~ O O O O O ~ ~ ~ 
 The game starts!
+  1 2 3 4 5 6 7 8 9 10 
+A ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
+B ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
+C ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
+D ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
+E ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
+F ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
+G ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
+H ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
+I ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
+J ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
 Take a shot!
 > E8
+  1 2 3 4 5 6 7 8 9 10 
+A ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
+B ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
+C ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
+D ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
+E ~ ~ ~ ~ ~ ~ ~ X ~ ~ 
+F ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
+G ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
+H ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
+I ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
+J ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
 You hit a ship!
   1 2 3 4 5 6 7 8 9 10 
 A O ~ ~ ~ ~ ~ ~ ~ ~ ~ 

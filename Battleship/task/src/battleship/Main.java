@@ -1,7 +1,5 @@
 package battleship;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
 
 enum Symbols {
@@ -59,7 +57,7 @@ public class Main {
         scanner = new Scanner(System.in);
         field = new char[SIZE][SIZE];
         initField();
-        printField();
+        printField(false);
         locateShips();
         startTheGame();
     }
@@ -74,20 +72,27 @@ public class Main {
 
     public static void locateShips(){
         for (Ships ship : Ships.values()) {
-            System.out.printf("Enter the coordinates of the %s (%d cells):", ship.getName(), ship.getLength());
+            System.out.printf("Enter the coordinates of the %s (%d cells):\n", ship.getName(), ship.getLength());
             takePosition(ship.getLength());
-            printField();
+            printField(false);
         }
 
     }
 
     public static void startTheGame() {
         System.out.println("The game starts!");
-        takeAShot();
-        printField();
+        printField(true);
+        boolean hit = takeAShot();
+        printField(true);
+        if (hit) {
+            System.out.println("You hit a ship!");
+        } else {
+            System.out.println("You missed!");
+        }
+        printField(false);
     }
 
-    private static void takeAShot() {
+    private static boolean takeAShot() {
         System.out.println("Take a shot!");
         String target = scanner.next();
         int row = getIndexRow(target);
@@ -103,11 +108,11 @@ public class Main {
         }
 
         if (field[row][col] == Symbols.SHIP.getSymbol()) {
-            System.out.println("You hit a ship!");
             field[row][col] = Symbols.HIT.getSymbol();
+            return true;
         } else {
-            System.out.println("You missed!");
             field[row][col] = Symbols.MISSED.getSymbol();
+            return false;
         }
     }
 
@@ -216,7 +221,7 @@ public class Main {
         return Integer.parseInt(position.substring(1)) - 1;
     }
 
-    private static void printField() {
+    public static void printField(boolean hideShips) {
         for (int i = 0; i < SIZE + 1; i++) {
             for (int j = 0; j < SIZE; j++) {
                 if (i == 0) {
@@ -228,7 +233,9 @@ public class Main {
                     if (j == 0) {
                         System.out.print((char) ('A' + i - 1) + " ");
                     }
-                    System.out.print(field[i - 1][j] + " ");
+                    System.out.print((hideShips && field[i - 1][j] == Symbols.SHIP.getSymbol() ?
+                            Symbols.FOG.getSymbol() : field[i - 1][j]) +
+                            " ");
                 }
             }
             System.out.println();
