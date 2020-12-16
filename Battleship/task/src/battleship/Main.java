@@ -45,8 +45,9 @@ enum Ships {
 
 public class Main {
 
-    private static Scanner scanner;
     private static final int SIZE = 10;
+    private static Scanner scanner;
+    private static int shipPieces = 5 + 4 + 2 * 3 + 2;
     private static char[][] field;
 
     public static void main(String[] args) {
@@ -82,18 +83,24 @@ public class Main {
     public static void startTheGame() {
         System.out.println("The game starts!");
         printField(true);
-        boolean hit = takeAShot();
-        printField(true);
-        if (hit) {
-            System.out.println("You hit a ship!");
-        } else {
-            System.out.println("You missed!");
+        System.out.println("Take a shot!\n");
+
+        while (shipPieces > 0) {
+            boolean hit = takeAShot();
+            if (shipPieces > 0) {
+                printField(true);
+                if (hit) {
+                    System.out.println("\nYou hit a ship! Try again:\n");
+                } else {
+                    System.out.println("\nYou missed! Try again:\n");
+                }
+            }
         }
         printField(false);
+        System.out.println("You sank the last ship. You won. Congratulations!");
     }
 
     private static boolean takeAShot() {
-        System.out.println("Take a shot!");
         String target = scanner.next();
         int row = getIndexRow(target);
         int col = getIndexCol(target);
@@ -107,7 +114,8 @@ public class Main {
             ok = row >= 0 && row < SIZE && col >= 0 && col < SIZE;
         }
 
-        if (field[row][col] == Symbols.SHIP.getSymbol()) {
+        if (field[row][col] == Symbols.SHIP.getSymbol() || field[row][col] == Symbols.HIT.getSymbol()) {
+            shipPieces -= field[row][col] == Symbols.SHIP.getSymbol() ? 1 : 0;
             field[row][col] = Symbols.HIT.getSymbol();
             return true;
         } else {
